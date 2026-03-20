@@ -13,8 +13,6 @@ This will also install `date_values` as a dependency.
 ## Usage
 
 ```ruby
-require 'date_values/rails'
-
 class Shop < ApplicationRecord
   attribute :billing_month, :year_month   # string column "2026-03"
   attribute :anniversary,   :month_day    # string column "--03-19"
