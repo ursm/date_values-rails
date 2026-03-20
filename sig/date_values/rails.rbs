@@ -1,0 +1,44 @@
+module DateValues
+  module Rails
+    class YearMonthType < ActiveModel::Type::Value
+      def type: () -> :year_month
+
+      def cast: (YearMonth value) -> YearMonth
+              | (String value) -> YearMonth
+              | (nil value) -> nil
+
+      def serialize: (YearMonth? value) -> String?
+
+      def deserialize: (String value) -> YearMonth
+                     | (nil value) -> nil
+    end
+
+    class MonthDayType < ActiveModel::Type::Value
+      def type: () -> :month_day
+
+      def cast: (MonthDay value) -> MonthDay
+              | (String value) -> MonthDay
+              | (nil value) -> nil
+
+      def serialize: (MonthDay? value) -> String?
+
+      def deserialize: (String value) -> MonthDay
+                     | (nil value) -> nil
+    end
+
+    class TimeOfDayType < ActiveModel::Type::Value
+      def type: () -> :time_of_day
+
+      def cast: (TimeOfDay value) -> TimeOfDay
+              | (Time value) -> TimeOfDay
+              | (String value) -> TimeOfDay
+              | (nil value) -> nil
+
+      def serialize: (TimeOfDay? value) -> String?
+
+      def deserialize: (Time value) -> TimeOfDay
+                     | (String value) -> TimeOfDay
+                     | (nil value) -> nil
+    end
+  end
+end

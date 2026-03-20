@@ -1,0 +1,48 @@
+name: Ruby
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Ruby ${{ matrix.ruby }} / Rails ${{ matrix.rails }}
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby:
+          - '3.3'
+          - '3.4'
+          - '4.0'
+        rails:
+          - '7.2'
+          - '8.0'
+          - '8.1'
+        exclude:
+          - ruby: '4.0'
+            rails: '7.2'
+    env:
+      ACTIVEMODEL_VERSION: '~> ${{ matrix.rails }}.0'
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: false
+      - name: Bundle install
+        run: |
+          bundle config set frozen false
+          bundle install --jobs 4
+      - name: Run the default task
+        run: bundle exec rake
