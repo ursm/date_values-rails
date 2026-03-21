@@ -117,6 +117,20 @@ I18n.l YearMonth.new(2026, 3), locale: :ja   # => "2026年3月"
 I18n.l TimeOfDay.new(14, 30), format: :long  # => "2:30:00 PM"
 ```
 
+### ActiveJob
+
+Values can be passed directly as job arguments — serializers are registered automatically:
+
+```ruby
+class BillingJob < ApplicationJob
+  def perform(month)
+    # month is a YearMonth
+  end
+end
+
+BillingJob.perform_later(YearMonth.new(2026, 3))
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
