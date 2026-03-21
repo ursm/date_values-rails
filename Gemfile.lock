@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    date_values-rails (0.1.1)
+    date_values-rails (0.1.2)
       activemodel (>= 7.2)
       date_values (>= 0.2.0)
 
@@ -115,7 +115,7 @@ CHECKSUMS
   connection_pool (3.0.2) sha256=33fff5ba71a12d2aa26cb72b1db8bba2a1a01823559fb01d29eb74c286e62e0a
   date (3.5.1) sha256=750d06384d7b9c15d562c76291407d89e368dda4d4fff957eb94962d325a0dc0
   date_values (0.2.0) sha256=c47b580deebaaa1f9676b0e3463527dfecfc4c015400f62050e9bf2c10832cb2
-  date_values-rails (0.1.1)
+  date_values-rails (0.1.2)
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
   erb (6.0.2) sha256=9fe6264d44f79422c87490a1558479bd0e7dad4dd0e317656e67ea3077b5242b
   globalid (1.3.0) sha256=05c639ad6eb4594522a0b07983022f04aa7254626ab69445a0e493aa3786ff11
