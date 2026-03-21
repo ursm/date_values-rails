@@ -21,3 +21,13 @@ ActiveSupport.on_load(:active_record) do
 end
 
 I18n::Backend::Base.prepend(DateValues::Rails::I18nBackend)
+
+ActiveSupport.on_load(:active_job) do
+  require_relative 'rails/active_job_serializer'
+
+  ActiveJob::Serializers.add_serializers(
+    DateValues::Rails::YearMonthSerializer,
+    DateValues::Rails::MonthDaySerializer,
+    DateValues::Rails::TimeOfDaySerializer
+  )
+end
