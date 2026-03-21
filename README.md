@@ -20,16 +20,23 @@ class Shop < ApplicationRecord
 end
 ```
 
-### Form Input
+### Type Casting
 
-Cast accepts Hash params from forms, so select-based inputs work naturally:
+Attributes accept strings, Hash params, and native objects:
 
 ```ruby
+# String (lenient — "3/19", "03-19", "--03-19" all work)
+shop = Shop.new(anniversary: '3/19')
+
+# Hash (from select-based form inputs)
 # params[:shop][:anniversary] => {"month" => "3", "day" => "19"}
+shop = Shop.new(anniversary: params[:shop][:anniversary])
+
+# Native object
+shop = Shop.new(anniversary: MonthDay.new(3, 19))
+
 shop.anniversary  # => #<DateValues::MonthDay --03-19>
 ```
-
-String input is lenient — `"3/19"`, `"03-19"`, and `"--03-19"` are all accepted.
 
 ### Queries
 
